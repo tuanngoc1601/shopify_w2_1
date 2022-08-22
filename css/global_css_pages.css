@@ -99,12 +99,17 @@
     justify-content: center;
     align-items: center; */
     max-width: 65%;
-    margin: 70px auto 0 auto;
+    margin: 50px auto 0 auto;
 }
 
 
 
 /* tabels */
+
+table {
+    border-collapse: collapse;
+}
+
 th, td {
     border-bottom: 1px solid #ddd;
     height: 40px;
@@ -126,4 +131,8 @@ table tr td:first-child {
 table tfoot th, table tfoot td {
     height: 45px;
     font-weight: 600;
+}
+
+table tfoot {
+    background-color: #fafbfb;
 }
