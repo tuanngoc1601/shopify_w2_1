@@ -38,17 +38,20 @@ table tr td:last-child {
     margin-top: 25px;
 }
 
-.form_add_device {
+.form {
     background-color: #fff;
 }
 
-
+.form-group {
+    /* width: max-content; */
+    margin: 45px auto;
+}
 
 
 
 .form_input {
     display: block;
-    margin: 40px auto 40px auto;
+    margin: 0 auto;
     width: 80%;
     padding: 22px 14px;
     font-size: 14px;
@@ -56,6 +59,7 @@ table tr td:last-child {
     border: none;
     background-color: #f9f4f4;
     box-shadow: 0 3px 3px #888888;
+    outline: none;
 }
 
 .form_input::placeholder {

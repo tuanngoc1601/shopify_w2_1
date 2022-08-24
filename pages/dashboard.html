@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,12 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/global_css_pages.css">
     <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Dashboard</title>
 </head>
+
 <body>
     <div class="container">
         <header class="heading">
@@ -59,35 +63,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr>
-                            <td>TV</td>
-                            <td>00:1B:44:11:3A:B7</td>
-                            <td>127.0.0.2</td>
-                            <td>2021-05-31</td>
-                            <td>50</td>
-                        </tr>
-                        <tr>
-                            <td>Washer</td>
-                            <td>00:1B:44:11:3A:B8</td>
-                            <td>127.0.0.3</td>
-                            <td>2021-05-31</td>
-                            <td>60</td>
-                        </tr>
-                        <tr>
-                            <td>Refrigerator</td>
-                            <td>00:1B:44:11:3A:B9</td>
-                            <td>127.0.0.4</td>
-                            <td>2021-05-31</td>
-                            <td>80</td>
-                        </tr>
-        
-                        <tr>
-                            <td>Selling Fan</td>
-                            <td>00:1B:44:11:3A:B2</td>
-                            <td>127.0.0.5</td>
-                            <td>2021-05-31</td>
-                            <td>100</td>
-                        </tr> -->
+                        <!-- insert data -->
                     </tbody>
                     <tfoot>
                         <tr>
@@ -95,27 +71,56 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>290</td>
+                            <td class="total"></td>
                         </tr>
                     </tfoot>
                 </table>
 
                 <div class="input_graph">
                     <div class="box"></div>
-                    <form action="" class="form_add_device">
-                        <input type="text" class="form_input" placeholder="Name" name="Name" required>
-                        <input type="text" class="form_input" placeholder="IP" name="ip" required>
-                        <input type="text" class="form_input" placeholder="Power" name="power" required>
-    
+                    <form action="" id="form" class="form">
+                        <div class="form-group">
+                            <input type="text" id="name" class="form_input" placeholder="Name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="ip" class="form_input" placeholder="IP" name="ip">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="power" class="form_input" placeholder="Power" name="power">
+                        </div>
+
                         <div class="btn_container">
                             <button class="btn" type="submit">add device</button>
                         </div>
-                
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <script type="module" src="../js/dashboard.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/getDataForm.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // getData
+            getDataForm({
+                form: '#form',
+                formGroupSelector: '.form-group',
+                rules: [
+                    getDataForm.isRequired('#name', 'Please enter your name device'),
+                    getDataForm.isRequired('#ip', 'Please enter your ip device'),
+                    getDataForm.isRequired('#power', 'Please enter your power device'),
+                ],
+                onSubmit: function (data) {
+                    // Call API
+                    // let obj = data;
+                    // render(obj);
+                    render();
+                    console.log(data);
+                }
+            });
+        });
+    </script>
 </body>
-</html> 
+
+</html>
