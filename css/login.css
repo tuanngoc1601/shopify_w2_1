@@ -17,19 +17,43 @@
     margin-bottom: 45px;
 }
 
+.form-group {
+    width: max-content;
+    margin: 30px auto;
+}
+
 .form_input {
     display: block;
-    margin: 15px auto 15px auto;
+    margin: 0 auto;
     width: 300px;
     padding: 12px 14px;
     font-size: 13px;
     border-radius: 2px;
-    border: none;
+    border: 1px solid #b3b3b3;
     background-color: #f9f4f4;
+    outline: none;
+}
+
+.form_input:hover {
+    border-color: #1dbfaf;
 }
 
 .form_input::placeholder {
     color: #b6b0b0;
+}
+
+.form-group.invalid .form_input {
+    border-color: #f33a58;
+}
+
+.form-group.invalid .form-message {
+    color: #f33a58;
+}
+
+.form-message {
+    font-size: 12px;
+    line-height: 16px;
+    /* padding: 4px 0 0; */
 }
 
 .login_submit {

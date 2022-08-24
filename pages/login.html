@@ -6,19 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Login</title>
+    <script src="../js/validation.js"></script>
+    <script src="../js/toast.js"></script>
 </head>
 <body>
     <div class="wrapper">
-        <form action="">
+        <form action="" method="POST" id="form">
             <h3 class="form_header">SOIOT SYSTEM</h3>
-            <input type="text" class="form_input" placeholder="Username" name="username" required>
-            <input type="password" class="form_input" placeholder="Password" name="password" required>
+            <div class="form-group">
+                <input type="text" id="username" class="form_input" placeholder="Username" name="username">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" class="form_input" placeholder="Password" name="password">
+                <span class="form-message"></span>
+            </div>
             <div class="login_submit">
                 <button type="submit" class="btn">LOGIN</button>
                 <a href="" class="register">or create new account</a>
             </div>
         </form>
     </div>
+
+    <div id="toast">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // validate
+            Validator({
+                form: '#form',
+                formGroupSelector: '.form-group',
+                errorSelector: '.form-message',
+                rules: [
+                    Validator.isRequired('#username', 'Please enter your account name'),
+                    Validator.minLength('#password', 4),
+                ],
+                onSubmit: function (data) {
+                    // Call API
+                    var username = data.username;
+                    var password = data.password;
+
+                    if(username == "john" && password == "1234") {
+                        showSuccessToast();
+                        setTimeout(() => {
+                            window.location.href = "./dashboard.html";
+                        }, 3000);
+                    } else {
+
+                        showErrorToast();
+                    }
+                    console.log(data);
+                }
+            });
+        });
+        
+        function showSuccessToast() {
+            toast({
+                title: "Login Successful!",
+                message: "Bạn đã đăng nhập thành công",
+                type: "success",
+                duration: 2000
+            });
+        }
+
+        function showErrorToast() {
+            toast({
+                title: "Login Failed!",
+                message: "Tài khoản hoặc mật khẩu của bạn chưa đúng",
+                type: "error",
+                duration: 2000
+            });
+        }
+    </script>
 </body>
 </html>

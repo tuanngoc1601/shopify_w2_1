@@ -110,6 +110,10 @@ table {
     border-collapse: collapse;
 }
 
+table thead {
+    height: 50px;
+}
+
 th, td {
     border-bottom: 1px solid #ddd;
     height: 40px;
