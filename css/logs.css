@@ -60,6 +60,11 @@ table tr th:last-child, table tr td:last-child {
     padding-right: 48px;
 }
 
+.no-data {
+    height: 40px;
+    font-size: 14px;
+}
+
 /* route page */
 .route_page {
     display: flex;
@@ -77,5 +82,15 @@ table tr th:last-child, table tr td:last-child {
     text-align: center;
     line-height: 40px;
     color: #fff;
+}
+
+.link_page.active {
+    background-color: rgb(247, 195, 195);
+    color: #588ef8;
+}
+
+.link_page:hover {
+    opacity: 0.7;
+    cursor: pointer;
 }
 
