@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <title>Dashboard</title>
 </head>
 
 <body>
     <div class="container">
         <header class="heading">
+            <i class="fa-solid fa-bars icon-bar"></i>
             <div class="user">
                 <i class="fa-solid fa-circle-user icon-user"></i>
                 <span class="user_name">Welcome John</span>
@@ -25,18 +27,25 @@
 
         <div class="sidebar">
             <div class="sidebar-header">
-                <i class="fa-solid fa-bars-progress icon-sidebar"></i>
-                <span>Device Manager</span>
+                <div class="head">
+                    <i class="fa-solid fa-bars-progress icon-sidebar"></i>
+                    <span>Device Manager</span>
+                </div>
+                <!-- user responsive -->
+                <div class="user">
+                    <i class="fa-solid fa-circle-user icon-user"></i>
+                    <span class="user_name">Welcome John</span>
+                </div>
             </div>
             <ul class="links">
                 <li>
-                    <a href="">
+                    <a href="./dashboard.html">
                         <i class="fa-solid fa-chart-line icon-sidebar"></i>
                         Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="./logs.html">
                         <i class="fa-solid fa-clock-rotate-left icon-sidebar"></i>
                         Logs
                     </a>
@@ -77,16 +86,18 @@
                 </table>
 
                 <div class="input_graph">
-                    <div class="box"></div>
+                    <div class="graphic">
+                        <canvas id="Chart"></canvas>
+                    </div>
                     <form action="" id="form" class="form">
                         <div class="form-group">
-                            <input type="text" id="name" class="form_input" placeholder="Name" name="name">
+                            <input type="text" id="name" class="form_input" placeholder="Name" name="Device">
                         </div>
                         <div class="form-group">
-                            <input type="text" id="ip" class="form_input" placeholder="IP" name="ip">
+                            <input type="text" id="ip" class="form_input" placeholder="IP" name="IP">
                         </div>
                         <div class="form-group">
-                            <input type="text" id="power" class="form_input" placeholder="Power" name="power">
+                            <input type="text" id="power" class="form_input" placeholder="Power" name="Power_Consumption">
                         </div>
 
                         <div class="btn_container">
@@ -101,6 +112,7 @@
     <script src="../js/dashboard.js"></script>
     <script src="../js/getDataForm.js"></script>
     <script>
+        render({});
         document.addEventListener('DOMContentLoaded', () => {
             // getData
             getDataForm({
@@ -113,13 +125,58 @@
                 ],
                 onSubmit: function (data) {
                     // Call API
-                    // let obj = data;
-                    // render(obj);
-                    render();
+                    render(
+                        {
+                            value: data
+                        }
+                    );
                     console.log(data);
                 }
             });
         });
+
+        var xValues = ["TV", "Washer", "Refrigerator", "Selling Fan"];
+        var yValues = [60, 60, 120, 120];
+
+        var barColors = [
+            "#ff5f81",
+            "#ff9f40",
+            "#ffcd56",
+            "#4bc0c0",
+        ];
+
+        new Chart("Chart", {
+            type: "pie",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }],
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Power Consumption"
+                },
+                cutoutPercentage: 50
+            }
+        });
+
+        const iconBar = document.querySelector('.icon-bar');
+        const sideBar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+
+
+        iconBar.onclick = () => {
+            sideBar.classList.add('show');
+        }
+
+        content.onclick = () => {
+            if(sideBar.classList.contains('show')) {
+                sideBar.classList.remove('show');
+            }
+        }
     </script>
 </body>
 

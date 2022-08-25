@@ -32,6 +32,7 @@
     border-radius: 2px;
     border: none;
     background-color: #eae1e1;
+    outline: none;
 }
 
 .btn_search {
@@ -60,9 +61,16 @@ table tr th:last-child, table tr td:last-child {
     padding-right: 48px;
 }
 
+.result-data {
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
 .no-data {
     height: 40px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* route page */

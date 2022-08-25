@@ -26,5 +26,26 @@
         "IP": "127.0.0.5",
         "Create_Date": "2021-05-31",
         "Power_Consumption": "100"
+    },
+    {
+        "Device": "TV",
+        "MAC_Address": "00:1B:44:11:3A:B7",
+        "IP": "127.0.0.2",
+        "Create_Date": "2021-05-31",
+        "Power_Consumption": "50"
+    },
+    {
+        "Device": "Washer",
+        "MAC_Address": "00:1B:44:11:3A:B8",
+        "IP": "127.0.0.3",
+        "Create_Date": "2021-05-31",
+        "Power_Consumption": "60"
+    },
+    {
+        "Device": "Refrigerator",
+        "MAC_Address": "00:1B:44:11:3A:B9",
+        "IP": "127.0.0.4",
+        "Create_Date": "2021-05-31",
+        "Power_Consumption": "80"
     }
 ]

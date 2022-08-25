@@ -86,6 +86,10 @@
     color: #73b0c9;
 }
 
+/* .active-sidebar {
+    color: #588ef8;
+} */
+
 
 /* content */
 
@@ -99,10 +103,16 @@
     justify-content: center;
     align-items: center; */
     max-width: 60%;
-    margin: 50px auto 0 auto;
+    margin: 50px auto 0px auto;
 }
 
+.sidebar .user {
+    display: none;
+}
 
+.heading .icon-bar {
+    display: none;
+}
 
 /* tabels */
 
@@ -113,6 +123,12 @@ table {
 table thead {
     height: 50px;
 }
+
+/* table tbody {
+    display: block;
+    height: 280px;
+    overflow: auto;
+} */
 
 th, td {
     border-bottom: 1px solid #ddd;

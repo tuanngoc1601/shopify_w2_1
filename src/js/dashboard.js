@@ -1,14 +1,32 @@
-"use strict";
+
 const tableBody = document.querySelector('table tbody');
 const tableFooter = document.querySelector('table tfoot .total');
 
-const render = () => {
+let index = 0;
+
+const render = ({ value = {} }) => {
+    const addData = [];
+    if(Object.keys(value).length !== 0) {
+        localStorage.clear();
+        // var indexStr = index.toString();
+        // localStorage.setItem(indexStr, JSON.stringify(value));
+        // index++;
+    }
+
+    let keys = Object.keys(localStorage);
+    let i = keys.length;
+    while(i--) {
+        addData.push(JSON.parse(localStorage.getItem(keys[i])));
+    }
+    
     fetch("../assets/data/device_data.json")
         .then(response => {
             return response.json();
         })
         .then(data => {
             console.log(data);
+            data = data.concat(addData);
+            tableBody.innerHTML = '';
             var sumPowers = 0;
             for (var i = 0; i < data.length; i++) {
                 var newRow = tableBody.insertRow();

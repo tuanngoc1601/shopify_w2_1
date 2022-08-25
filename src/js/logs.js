@@ -1,10 +1,11 @@
 const tableBody = document.querySelector('table tbody');
+const tableFooter = document.querySelector('table tfoot');
+const routePage = document.querySelector('.route_page');
 const links = document.querySelectorAll('.route_page .link_page');
 const btn = document.querySelector('.btn_input .btn_search');
 const input_search = document.querySelector('.btn_input .form_input');
 
-console.log(btn)
-
+console.log(routePage.firstElementChild);
 
 let data1 = [];
 let data2 = [];
@@ -76,23 +77,38 @@ fetch("../assets/data/logs.json")
             }
         });
 
-        input_search.onblur = () => {
-            console.log(input_search.value);
-        }
+        // input_search.onblur = () => {
+        //     console.log(input_search.value);
+        // }
 
         btn.onclick = (e) => {
             e.preventDefault();
-            
+            console.log(input_search.value);
             if(input_search.value === '') {
                 alert('Ban chua nhap ten thiet bi!');
             } else {
                 dataSearch = searchValue(input_search.value, data);
-
+                tableFooter.style.display = 'none';
+                routePage.style.display = 'none';
                 if(dataSearch.length === 0) {
-                    tableBody.innerHTML = '<span class="not-data">No Result</span>';
+                    tableBody.innerHTML = `
+                        <div class="result-data">
+                            <span class="not-data">No Result</span>
+                        </div>
+                    `;
                 } else {
                     document.querySelector('tbody').innerHTML = '';
                     renderRow(dataSearch);
+                }
+                input_search.oninput = () => {
+                    if(input_search.value === '') {
+                        tableFooter.style.display = 'table-footer-group';
+                        routePage.style.display = 'flex';
+                        document.querySelector('.link_page.active').classList.remove('active');
+                        routePage.firstElementChild.classList.add('active');
+                        tableBody.innerHTML = '';
+                        renderRow(data1);
+                    }
                 }
             }
         }
