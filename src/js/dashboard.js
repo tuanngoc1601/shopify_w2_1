@@ -2,20 +2,27 @@
 const tableBody = document.querySelector('table tbody');
 const tableFooter = document.querySelector('table tfoot .total');
 
-let index = 0;
+// let index = 0;
 
 const render = ({ value = {} }) => {
     const addData = [];
     if(Object.keys(value).length !== 0) {
-        localStorage.clear();
-        // var indexStr = index.toString();
-        // localStorage.setItem(indexStr, JSON.stringify(value));
-        // index++;
+        // localStorage.clear();
+        let keys = Object.keys(localStorage);
+        let i = keys.length;
+        if(i === 0) {
+            localStorage.setItem("index", 0);
+        }
+
+        var indexStr = localStorage.getItem("index").toString();
+        localStorage.setItem(indexStr, JSON.stringify(value));
+        localStorage.setItem("index", localStorage.getItem("index") + 1);
     }
 
     let keys = Object.keys(localStorage);
     let i = keys.length;
     while(i--) {
+        if(keys[i] !== "index")
         addData.push(JSON.parse(localStorage.getItem(keys[i])));
     }
     
