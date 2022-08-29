@@ -58,7 +58,7 @@ table tr th:first-child {
 }
 
 table tr th:last-child, table tr td:last-child {
-    padding-right: 48px;
+    padding-right: 20px;
 }
 
 .result-data {

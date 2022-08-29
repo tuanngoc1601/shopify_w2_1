@@ -123,8 +123,12 @@
                     getDataForm.isRequired('#ip', 'Please enter your ip device'),
                     getDataForm.isRequired('#power', 'Please enter your power device'),
                 ],
-                onSubmit: function (data) {
+                onSubmit: function (data, inputs) {
                     // Call API
+                    inputs.forEach(input => {
+                        input.value = '';
+                    })
+
                     render(
                         {
                             value: data

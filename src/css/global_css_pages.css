@@ -102,8 +102,14 @@
     /* display: flex;
     justify-content: center;
     align-items: center; */
-    max-width: 60%;
+    max-width: 50%;
     margin: 50px auto 0px auto;
+}
+
+#table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 .sidebar .user {
@@ -116,19 +122,11 @@
 
 /* tabels */
 
-table {
-    border-collapse: collapse;
-}
 
 table thead {
     height: 50px;
 }
 
-/* table tbody {
-    display: block;
-    height: 280px;
-    overflow: auto;
-} */
 
 th, td {
     border-bottom: 1px solid #ddd;

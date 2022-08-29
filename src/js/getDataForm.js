@@ -42,7 +42,7 @@ const getDataForm = (options) => {
                         Create_Date: '2021-05-31'
                     });
 
-                    options.onSubmit(formValues);
+                    options.onSubmit(formValues, enableInputs);
 
                     // focus
                 }
